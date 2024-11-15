@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio IPVG</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <style>
+        
+        #pCol {
+            background-image: linear-gradient(to right,#A0153E,#5D0E41); /*Color de fondo*/
+            color: white;             /*Color de texto*/
+            /*padding: 20px;            Añadir un poco de relleno para hacer el div más grande */
+        }
+        #sCol {
+            background-image: linear-gradient(to right,#5D0E41,#00224D); /*Color de fondo*/
+            color: white;             /*Color de texto*/
+            /*padding: 20px;            Añadir un poco de relleno para hacer el div más grande */
+        }
+        #tCol {
+            background-image: linear-gradient(to right,#00224D,#212529); /*Color de fondo*/
+            color: white;             /*Color de texto*/
+            /*padding: 20px;            Añadir un poco de relleno para hacer el div más grande */
+        }
+
+        
+        
+        .music-container{
+            background-color: #212529;
+            border-radius: 15px;
+            display: flex;
+            padding: 20px 30px;
+            position: relative;
+            margin: 30px;
+        }
+        .img-container{
+            position: relative;
+            width: 100px;
+        }
+        /*.img-container::after{
+            content: "";
+            background-color: #212529;
+            height: 20px;
+            width: 20px;
+            position: absolute;
+            left: 50%;
+            bottom: 50%;
+            border-radius: 50%;
+            transform: translate(0%,-60%);
+        }*/
+    
+        #noticias {
+            background-color: #212529;
+            border-radius: 15px;
+            display: flex;
+            padding: 20px 30px;
+            position: relative;
+            margin: 30px;
+        }
+
+
+        /*noticias}*/
+        .tabla {
+            width: 100%;
+            border-collapse: collapse;
+        }
+             .tabla td { 
+                padding: 10px;
+                border: 1px solid #ddd;
+
+
+             } 
+                .imagen_noticia {
+                    border-radius: 8px;
+                } 
+                .fecha_sede { color: #2c2150; }
+
+                .contenedor-circular {
+                border: 2px solid #6c7788;
+                border-radius: 8px;
+                background-color: #908f9d;
+                padding: 20px;
+                box-shadow: 0 4px 8px rgba(222, 214, 214, 0.1); /* Sombra para efecto de elevación /
+                }
+                .titulo-noticia {
+                    color: #250238; / Color del título */
+                    text-decoration: none; }
+        
+        .img-container img{
+            width: inherit;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            animation: rotate 8s linear infinite;
+            animation-play-state: paused;
+        }
+
+        .music-container.play .img-container img{
+            animation-play-state: running;
+        }
+        .navigation{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+        .action-btn{
+            background-color: #212529;
+            border: 0;
+            color: gray;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 10px;
+            margin: 0 20px;
+        }
+        .action-btn-big{
+            color: gray;
+            font-size: 30px;
+        }
+        .action-btn:focus{
+            outline: 0;
+        }
+
+        .music-info{
+            background-color: #323235;
+            border-radius: 15px 15px 0 0;
+            position: absolute;
+            top: 0;
+            left: 20px;
+            width: calc(100% - 40px);
+            opacity: 0;
+            transform: translateY(0%px);
+            padding: 10px 10px 10px 150px;
+            transition: transform 0.3s ease-in opacity 0.3s ease-in;
+        }
+
+        .music-info h4 {
+            margin: 0;
+        }
+
+        .music-container.music-container.play .music-info{
+            opacity: 1;
+            transform: translateY(-100%);
+        }
+
+        .progress-container{
+            background-color: #212529;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 0;
+            height: 4px;
+            width: 100%;
+        }
+        
+        .progress {
+            background-color: #FF204E;
+            border-radius: 5px;
+            height: 100%;
+            width: 50%;
+            transition: width 0.1s linear;
+        }
+
+        body{
+            background: linear-gradient(to right,#FF204E, #00224D);
+        }
+
+        @keyframes rotate{
+            from{
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body style="height: 100vh;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">    
+                <a class="navbar-brand" href="">Radio IPVG</a>
+                <a href="login.html">
+                    <button type="button" class="btn btn-dark btn-outline-light">Acceder</button>
+                </a>
+            </div>
+        </nav>
+    <div class="container-fluid h-100">
+        <div class="row mt-5" style="height: 92vh;">
+            
+            <div id="sCol" class="d-flex flex-column col-lg-6 col-md-12 justify-content-center align-items-center">
+                <!--Contenedor-->
+                <div class="music-container">
+                    <div class="music-info">
+                        <h4 id="tituloC">Hambre</h4>
+                        <div class="progress-container">
+                            <div class="progress"></div>
+                        </div>
+                    </div>
+                    <!--Canción-->
+                    <audio src="Música/Hambre.mp3" id="audioMp3"></audio>
+                    <!--Imágen-->
+                    <div class="img-container">
+                        <img src="Imágenes/Hambre.jpg" id="portada" width="60px">
+                    </div>
+                    <!--Navegación-->
+                    <div class="navigation">
+                        <button id="prev" class="action-btn">
+                            <i class="fa fa-backward"></i>
+                        </button>
+                        <button id="play" class="action-btn action-btn-big">
+                            <i class="fa fa-play"></i>
+                        </button>
+                        <button id="next" class="action-btn">
+                            <i class="fa fa-forward"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="tCol" class="d-flex flex-column col-lg-6 col-md-12 justify-content-center align-items-center">
+                <div >
+                        <table class="d-flex justify-content-center  align-items-center  contenedor-circular" valign="top">
+                                <tr>
+                    
+                                    <td>
+                                        <!-- Imagen de la noticia -->
+                                        <a href="javascript:ver(214);">
+                                            <img src="https://intranet.virginiogomez.cl/intranet/imagenes/noticias/1718300558.jpg"
+                                            alt="Imagen de la noticia" width="80" height="60" class="imagen_noticia">
+                                        </a>
+                                    </td>
+                                <td> 
+                    
+                                            <a href="javascript:ver(214);"  class="titulo-noticia">
+                                                <!-- Título de la noticia --> 
+                                                <b>INJUV Biobío te invita a responder la encuesta Digital Hablemos De Todo - TÚ decides los temas importantes</b>
+                                                <br>
+                                                </a> <!-- Fecha y sede de la noticia --> 
+                                                <span class="fecha_sede">Fecha: 11-11-2024 - Todas las Sedes</span>
+                                                <br>
+                                                <!-- Descripción de la noticia --> 
+                                                Estimados Estudiantes Queremos saber qué temas te interesan para crear juntos las nuevas conversaciones en Hablemos de Todo. La encuesta es breve... 
+                                            </td> 
+                                </tr>
+                        </table>
+                    <br>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+    <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+        <div class="container text-center">
+          <small>Copyright &copy; Juan Pablo Ananías, Yhilian Stevens, Alexis Lizama</small>
+        </div>
+    </footer>
+    <script src="reproductor.js"></script>
+</body>
+</html>
